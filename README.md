@@ -10,8 +10,7 @@
   - JPA + PostgreSQL
 - **Frontend**:
   - Angular 16 (Standalone Components)
-  - Responsive UI with Angular Material
-  - JWT Interceptor
+  - Responsive UI with Angular
 - **DevOps**:
   - Dockerized containers
 
