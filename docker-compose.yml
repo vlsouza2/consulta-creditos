@@ -1,0 +1,64 @@
+version: "3"
+services:
+  angular:
+    container_name: angular
+    build: ./desafio-frontend
+    ports:
+      - 4200:4200
+    volumes:
+      - ./desafio-frontend:/app
+      - /app/node_modules  
+    restart: unless-stopped
+    environment:
+      API_URL: http://localhost:8080
+      TZ: Europe/Berlin
+    networks:
+      - docker-spring-angular
+
+
+  spring-app:
+    build: ./desafio-back-end
+    container_name: spring-app  
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5433/desafio
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL-AUTO: update 
+    
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    container_name: zookeeper  # Correct placement - under service definition
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - zookeeper_data:/var/lib/zookeeper/data  # Volume reference only here
+
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+
+volumes:
+  zookeeper_data:  # Volume declaration only - no properties
+  kafka_data:
+
+
+networks:
+  docker-spring-angular:
+    driver: bridge

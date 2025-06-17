@@ -1,0 +1,40 @@
+<div class="consulta-container">
+  <h2>Consulta de Créditos</h2>
+
+  <div class="form-group">
+    <select [(ngModel)]="tipo">
+      <option value="credito">Nº Crédito</option>
+      <option value="nfse">Crédito por NFS-e</option>
+    </select>
+    <input [(ngModel)]="numero" placeholder="Digite o número..." />
+    <button (click)="consultar()">Buscar</button>
+  </div>
+
+  <div class="tabela-container" *ngIf="resultados.length">
+    <table class="tabela-creditos">
+      <thead>
+        <tr>
+          <th>Nº Crédito</th>
+          <th>NFS-e</th>
+          <th>Data</th>
+          <th>Valor ISSQN</th>
+          <th>Tipo</th>
+          <th>Simples</th>
+        </tr>
+      </thead>
+      <tbody>
+<tr *ngFor="let item of resultados">
+  <td>{{ item.numeroCredito }}</td>
+  <td>{{ item.numeroNfse }}</td>
+  <td>{{ item.dataConstituicao }}</td>
+  <td>{{ item.valorIssqn | currency:'BRL' }}</td>
+  <td>{{ item.tipoCredito }}</td>
+  <td>{{ item.simplesNacional ? 'Sim' : 'Não' }}</td>
+</tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="erro" class="mensagem-erro">
+  {{ erro }}
+</div>
+</div>
