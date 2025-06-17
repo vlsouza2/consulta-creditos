@@ -28,42 +28,6 @@
 - Docker 20.10+
 - Maven 3.8+
 
-## 🏗️ Project Structure
-app/
-app-desafio/
-├── backend/                  # Spring Boot Application
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/com/desafio/
-│   │   │   │   ├── config/      # Configuration classes
-│   │   │   │   ├── controller/  # REST controllers
-│   │   │   │   ├── model/       # JPA entities
-│   │   │   │   ├── repository/  # Spring Data repositories
-│   │   │   │   ├── service/     # Business logic
-│   │   │   │   └── Application.java
-│   │   │   └── resources/
-│   │   │       ├── application.properties
-│   │   │       └── application-dev.properties
-│   │   └── test/              # Test classes
-│   ├── Dockerfile            # Docker configuration for backend
-│   └── pom.xml
-│
-├── frontend/                 # Angular Application
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── core/         # Core modules
-│   │   │   ├── modules/      # Feature modules
-│   │   │   └── shared/       # Shared components
-│   │   ├── assets/
-│   │   └── environments/
-│   ├── Dockerfile            # Docker configuration for frontend
-│   ├── angular.json
-│   └── package.json
-│
-├── docker-compose.yml        # Orchestration file
-└── README.md
-
-
 
 ## 🚀 Quick Start
 
