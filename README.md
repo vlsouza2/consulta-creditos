@@ -7,17 +7,13 @@
 
 - **Backend**: 
   - REST API with Spring Boot 2.7
-  - JPA/Hibernate + PostgreSQL
-  - JWT Authentication
-  - Swagger Documentation
+  - JPA + PostgreSQL
 - **Frontend**:
   - Angular 16 (Standalone Components)
   - Responsive UI with Angular Material
   - JWT Interceptor
 - **DevOps**:
   - Dockerized containers
-  - CI/CD ready
-  - Multi-stage builds
 
 ## 🛠️ Prerequisites
 
