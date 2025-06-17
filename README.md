@@ -2,9 +2,6 @@
 
 **Java 11 | Spring Boot 2.7 | Angular 16 | PostgreSQL**
 
-A production-ready template for fullstack applications with modern architecture and best practices.
-
-![Architecture Diagram](https://i.imgur.com/fNQB5Yl.png)
 
 ## 📌 Features
 
